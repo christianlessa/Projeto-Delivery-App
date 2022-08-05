@@ -11,11 +11,11 @@ module.exports = (sequelize, DataTypes) => {
   }, { createdAt: "sale_date", updateAt: false, tableName: 'sales'});
 
   Sale.associate = function (models) {
-    models.Sale.belongsTo(models.User,
+    models.sale.belongsTo(models.user,
       {
         foreignKey: "user_id", as: 'Customer'
       }),
-      models.Sale.belongsTo(models.User,
+      models.sale.belongsTo(models.user,
       {
         foreignKey: "seller_id", as: 'Seller'
       })
