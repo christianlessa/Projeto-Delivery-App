@@ -22,8 +22,16 @@ const loginValidator = async ({ email, password }) => {
     };
 
     const token = getToken(user);
-    return { token };
-};
+    return {
+        user: {
+            id: checkUser.id,
+            name: checkUser.name,
+            email: checkUser.email,
+            password: checkUser.password,
+            role: checkUser.role,
+        }, token
+    }
+}
 
 module.exports = {
     loginValidator,
