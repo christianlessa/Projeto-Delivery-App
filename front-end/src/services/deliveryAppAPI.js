@@ -6,6 +6,7 @@ export default async function deliveryAppAPI(input) {
   case 'loginUser': {
     const { token } = JSON.parse(localStorage.getItem('user'));
     const loginUser = await axios({
+      method: 'post',
       url: 'http://localhost:3001/login/',
       data: bodyValue,
       headers: { authorization: token },
