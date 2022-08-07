@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import AppContext from './AppContext';
 
 export default function AppProvider({ children }) {
   const [currentUser, setCurrentUser] = useState('');
-
-  useEffect(() => {
-  }, []);
 
   const globalState = useMemo(() => ({
     currentUser,
