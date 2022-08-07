@@ -13,7 +13,7 @@ function LoginPage() {
   const [invalidMessage, setInvalidMessage] = useState('hidden');
 
   const handleChange = ({ target: { name, value } }) => {
-    // console.log(name, value);
+    console.log(name, value, inputState);
     setInputState({
       ...inputState,
       [name]: value,
@@ -57,7 +57,8 @@ function LoginPage() {
   };
 
   useEffect(() => {
-    const emailRegexValidator = /\S+@\S+.\S+/;
+    // eslint-disable-next-line no-useless-escape
+    const emailRegexValidator = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
     const emailValidator = emailRegexValidator.test(inputState.email);
     const magicNumber = 5;
     const passwordValidator = inputState.password.length > magicNumber;
