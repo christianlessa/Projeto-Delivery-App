@@ -14,7 +14,7 @@ function LoginPage() {
   const [invalidMessage, setInvalidMessage] = useState('hidden');
 
   const handleChange = ({ target: { name, value } }) => {
-    console.log(name, value, inputState);
+    // console.log(name, value, inputState);
     setInputState({
       ...inputState,
       [name]: value,
