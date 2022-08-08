@@ -9,9 +9,9 @@ const controllerRegister = async (req, res, _next) => {
             password,
             role: role || 'customer',
         });
-        res.status(201).json(createUser);
+        return res.status(201).json(createUser);
     } catch (error) {
-        res.status(409).json({ message: error.message });
+        return res.status(409).json({ message: error.message });
     }
 };
 
