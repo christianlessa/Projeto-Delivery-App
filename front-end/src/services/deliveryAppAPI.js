@@ -23,6 +23,13 @@ export default async function deliveryAppAPI(input, bodyValue) {
       return 'exists';
     }
   }
+  case 'getAllProducts': {
+    const allProducts = await ({
+      method: 'get',
+      url: 'http://localhost:3001/customer/products',
+    });
+    return allProducts;
+  }
   default:
     return console.log('error');
   }

@@ -89,7 +89,7 @@ export default function ProductCard({ product }) {
           onClick={ () => handleChange('plus') }
           className="float-right"
         >
-          -
+          +
         </Button>
       </Card.Body>
     </Card>
