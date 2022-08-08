@@ -8,7 +8,7 @@ const productRouter = require('./routes/routesProducts');
 
 // https://expressjs.com/pt-br/starter/static-files.html
 
-const imagesUpload = path.join(__dirname, '..', '..', '..', 'public', 'images');
+const imagesUpload = path.join(__dirname, '..', '..', 'public', 'images');
 
 const app = express();
 
