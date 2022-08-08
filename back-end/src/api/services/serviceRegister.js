@@ -16,7 +16,7 @@ const createUser = async (data) => {
 
     const token = getToken({ name, email, role, password });
 
-    return [id, token];
+    return { id, token };
 };
 
 module.exports = {
