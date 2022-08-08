@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Container, Form, FloatingLabel, Button } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 import deliveryAppAPI from '../services/deliveryAppAPI';
 
 function LoginPage() {
@@ -127,5 +128,11 @@ function LoginPage() {
     </Container>
   );
 }
+
+LoginPage.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};
 
 export default LoginPage;
