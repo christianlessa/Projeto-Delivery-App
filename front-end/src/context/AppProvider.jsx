@@ -4,11 +4,14 @@ import AppContext from './AppContext';
 
 export default function AppProvider({ children }) {
   const [currentUser, setCurrentUser] = useState('');
+  const [productItens, setProductItens] = useState([]);
 
   const globalState = useMemo(() => ({
     currentUser,
     setCurrentUser,
-  }), [currentUser]);
+    productItens,
+    setProductItens,
+  }), [currentUser, productItens]);
 
   return (
     <AppContext.Provider value={ globalState }>
