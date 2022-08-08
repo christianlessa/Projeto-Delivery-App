@@ -4,24 +4,12 @@ const getToken = require('../helpers/getToken');
 
 const loginValidator = async ({ email, password }) => {
     const hashPassword = md5(password);
-    const checkUser = await model.user.findOne({
-        where: { email, password: hashPassword },
-    });
-
+    const checkUser = await model.user.findOne({ where: { email, password: hashPassword } });
     if (!checkUser) {
         const message = 'Invalid login';
         throw new Error(message);
-    }
-
-    const user = {
-        id: checkUser.id,
-        name: checkUser.name,
-        email: checkUser.email,
-        password: checkUser.password,
-        role: checkUser.role,
-    };
-
-    const token = getToken(user);
+    } 
+    const token = getToken(checkUser.dataValues);
     return {
         user: {
             id: checkUser.id,
@@ -29,9 +17,10 @@ const loginValidator = async ({ email, password }) => {
             email: checkUser.email,
             password: checkUser.password,
             role: checkUser.role,
-        }, token
-    }
-}
+        },
+        token,
+    };
+};
 
 module.exports = {
     loginValidator,
