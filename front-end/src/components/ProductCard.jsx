@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Card, Form } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import AppProvider from '../context/AppProvider';
+import AppContext from '../context/AppContext';
 
 export default function ProductCard({ product }) {
-  const { productItens, setProductItens } = useContext(AppProvider);
-  const [quantityProduct, setQuantityProduct] = useContext(0);
+  const { productItens, setProductItens } = useContext(AppContext);
+  const [quantityProduct, setQuantityProduct] = useState(0);
 
   const changeCartItens = (quantity) => {
     const filter = productItens.filter(({ id }) => id !== product.id);
@@ -48,7 +48,7 @@ export default function ProductCard({ product }) {
   };
 
   return (
-    <Card>
+    <Card style={ { width: '18rem' } }>
       <Card.Body>
         <Card.Text
           data-testid={ `customer_products__element-card-price-${product.id}` }
@@ -58,18 +58,18 @@ export default function ProductCard({ product }) {
         <Card.Img
           data-testid={ `customer_products__img-card-bg-image-${product.id}` }
           src={ product.url_image }
-        >
-          { product.url_image }
-        </Card.Img>
+          variant="top"
+        />
         <Card.Title
           data-testid={ `customer_products__element-card-title-${product.id}` }
+          className="text-center"
         >
-          {product.name}
+          { product.name }
         </Card.Title>
         <Form>
           <Form.Control
             data-testid={ `customer_products__input-card-quantity-${product.id}` }
-            onChange={ (e) => handleChange('input', e) }
+            onChange={ (event) => handleChange('input', event) }
             value={ quantityProduct }
             min="0"
           />

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Container, Form, FloatingLabel, Button } from 'react-bootstrap';
+import { Container, Form, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import deliveryAppAPI from '../services/deliveryAppAPI';
 
@@ -84,7 +84,9 @@ function LoginPage() {
 
       <h1> Name of App </h1>
       <Form autoComplete="off">
-        <FloatingLabel label="Login" />
+        <Form.Label label="Login">
+          Login
+        </Form.Label>
         <Form.Control
           data-testid="common_login__input-email"
           type="email"
@@ -93,7 +95,9 @@ function LoginPage() {
           onChange={ handleChange }
           value={ inputState.email }
         />
-        <FloatingLabel label="Password" />
+        <Form.Label label="Password">
+          Password
+        </Form.Label>
         <Form.Control
           data-testid="common_login__input-password"
           type="password"

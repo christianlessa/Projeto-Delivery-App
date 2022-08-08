@@ -23,8 +23,7 @@ const getAllProducts = async (setAllProducts, setCart) => {
 
 export default function ProductsPage({ history }) {
   const { allProducts, setAllProducts, setCart, totalPrice } = useContext(AppContext);
-
-  const [btnStatus, setBtnStatus] = useState(false);
+  const [btnStatus, setBtnStatus] = useState(true);
 
   useEffect(() => {
     getAllProducts(setAllProducts, setCart);
@@ -45,10 +44,6 @@ export default function ProductsPage({ history }) {
     <div>
       <NavbarComponent />
       <Container>
-
-        { allProducts.map((product) => (
-          <ProductCard key={ product.name } product={ product } />
-        ))}
         <Button
           data-testid="customer_products__button-cart"
           type="button"
@@ -62,6 +57,9 @@ export default function ProductsPage({ history }) {
             { `R$ ${totalPrice}`}
           </span>
         </Button>
+        { allProducts.map((product) => (
+          <ProductCard key={ product.name } product={ product } />
+        ))}
       </Container>
     </div>
   );

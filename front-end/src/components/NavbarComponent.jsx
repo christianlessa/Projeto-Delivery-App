@@ -9,9 +9,7 @@ function NavbarComponent() {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
-    if (user) {
-      setCurrentUser(user.name);
-    }
+    if (user) setCurrentUser(user.user.name);
   }, [currentUser, setCurrentUser]);
 
   const btnProducts = () => {
@@ -22,7 +20,8 @@ function NavbarComponent() {
     history.push('/customer/orders');
   };
 
-  const btnLogout = () => {
+  const btnLogout = async () => {
+    localStorage.removeItem('user');
     history.push('/');
   };
 
@@ -49,6 +48,7 @@ function NavbarComponent() {
         <Button
           data-testid="customer_products__element-navbar-user-full-name"
           type="btn right"
+          className="btn-right"
         >
           { currentUser }
         </Button>

@@ -11,6 +11,13 @@ export default async function deliveryAppAPI(input, bodyValue) {
     });
     return loginUser.data;
   }
+  case 'getAllProducts': {
+    const allProducts = await axios({
+      method: 'get',
+      url: 'http://localhost:3001/customer/products',
+    });
+    return allProducts;
+  }
   case 'registerUser': {
     try {
       const newUser = await axios({
@@ -22,13 +29,6 @@ export default async function deliveryAppAPI(input, bodyValue) {
     } catch (error) {
       return 'exists';
     }
-  }
-  case 'getAllProducts': {
-    const allProducts = await ({
-      method: 'get',
-      url: 'http://localhost:3001/customer/products',
-    });
-    return allProducts;
   }
   default:
     return console.log('error');
