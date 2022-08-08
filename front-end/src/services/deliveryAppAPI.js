@@ -11,6 +11,18 @@ export default async function deliveryAppAPI(input, bodyValue) {
     });
     return loginUser.data;
   }
+  case 'registerUser': {
+    try {
+      const newUser = await axios({
+        method: 'post',
+        url: 'http://localhost:3001/register/',
+        data: bodyValue,
+      });
+      return newUser.data;
+    } catch (error) {
+      return 'exists';
+    }
+  }
   default:
     return console.log('error');
   }
