@@ -53,7 +53,7 @@ export default function ProductCard({ product }) {
         <Card.Text
           data-testid={ `customer_products__element-card-price-${product.id}` }
         >
-          { product.price.replace('.', ',') }
+          { `R$ ${product.price.replace('.', ',')}` }
         </Card.Text>
         <Card.Img
           data-testid={ `customer_products__img-card-bg-image-${product.id}` }
