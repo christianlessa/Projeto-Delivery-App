@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { Button, Container } from 'react-bootstrap';
+import { Container, Nav, Navbar } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 
@@ -26,41 +26,43 @@ function NavbarComponent() {
   };
 
   return (
-    <Container className="navbar-container">
-      <Container className="navbar-left">
-        <Button
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Container>
+        <Navbar.Brand
           data-testid="customer_products__element-navbar-link-products"
           type="button"
           onClick={ btnProducts }
         >
           Produtos
-        </Button>
-        <Button
-          data-testid="customer_products__element-navbar-link-orders"
-          type="button"
-          onClick={ btnOrders }
-        >
-          Meus Pedidos
-        </Button>
+        </Navbar.Brand>
+        <Navbar.Collapse className="justify-content-end">
+          <Nav className="me-auto">
+            <Nav.Link
+              data-testid="customer_products__element-navbar-link-orders"
+              onClick={ btnOrders }
+            >
+              Meus Pedidos
+            </Nav.Link>
+          </Nav>
+          <Nav>
+            <Nav.Link
+              data-testid="customer_products__element-navbar-user-full-name"
+              type="btn right"
+              className="btn-right"
+            >
+              { currentUser }
+            </Nav.Link>
+            <Nav.Link
+              data-testid="customer_products__element-navbar-link-logout"
+              type="btn right"
+              onClick={ btnLogout }
+            >
+              Sair
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
       </Container>
-
-      <Container className="navbar-left">
-        <Button
-          data-testid="customer_products__element-navbar-user-full-name"
-          type="btn right"
-          className="btn-right"
-        >
-          { currentUser }
-        </Button>
-        <Button
-          data-testid="customer_products__element-navbar-link-logout"
-          type="btn right"
-          onClick={ btnLogout }
-        >
-          Sair
-        </Button>
-      </Container>
-    </Container>
+    </Navbar>
   );
 }
 
