@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Container, Form, FloatingLabel, Button } from 'react-bootstrap';
+import { Container, Form, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import deliveryAppAPI from '../services/deliveryAppAPI';
 
@@ -41,11 +41,11 @@ function LoginPage() {
       localStorage.clear(); // limpando localStorage
       localStorage.setItem('user', JSON.stringify(login));
       // console.log(login.user.role);
-      if (login.user.role === 'administrator') {
+      if (login.role === 'administrator') {
         history.push('/admin/manage');
-      } else if (login.user.role === 'customer') {
+      } else if (login.role === 'customer') {
         history.push('/customer/products');
-      } else if (login.user.role === 'seller') {
+      } else if (login.role === 'seller') {
         history.push('seller/orders');
       }
     } catch (error) {
@@ -84,7 +84,9 @@ function LoginPage() {
 
       <h1> Name of App </h1>
       <Form autoComplete="off">
-        <FloatingLabel label="Login" />
+        <Form.Label label="Login">
+          Login
+        </Form.Label>
         <Form.Control
           data-testid="common_login__input-email"
           type="email"
@@ -93,7 +95,9 @@ function LoginPage() {
           onChange={ handleChange }
           value={ inputState.email }
         />
-        <FloatingLabel label="Password" />
+        <Form.Label label="Password">
+          Password
+        </Form.Label>
         <Form.Control
           data-testid="common_login__input-password"
           type="password"

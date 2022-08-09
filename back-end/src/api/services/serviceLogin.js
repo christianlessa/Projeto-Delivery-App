@@ -8,18 +8,10 @@ const loginValidator = async ({ email, password }) => {
     if (!checkUser) {
         const message = 'Invalid login';
         throw new Error(message);
-    } 
+    }
+    const { role, name, id } = checkUser;
     const token = getToken(checkUser.dataValues);
-    return {
-        user: {
-            id: checkUser.id,
-            name: checkUser.name,
-            email: checkUser.email,
-            password: checkUser.password,
-            role: checkUser.role,
-        },
-        token,
-    };
+    return { id, name, email, role, token };
 };
 
 module.exports = {
