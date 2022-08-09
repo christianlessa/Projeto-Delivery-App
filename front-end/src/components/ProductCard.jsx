@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 import AppContext from '../context/AppContext';
 
 export default function ProductCard({ product }) {
-  const { productItens, setProductItens } = useContext(AppContext);
+  const { productItems, setProductItems } = useContext(AppContext);
   const [quantityProduct, setQuantityProduct] = useState(0);
 
   const changeCartItens = (quantity) => {
-    const filter = productItens.filter(({ id }) => id !== product.id);
+    const filter = productItems.filter(({ id }) => id !== product.id);
 
-    setProductItens([
+    setProductItems([
       ...filter,
       { ...product, quantity },
     ]);
@@ -41,7 +41,7 @@ export default function ProductCard({ product }) {
       }
       if (quantityProduct === 0) {
         const filter = quantityProduct.filter(({ id }) => id !== product.id);
-        setProductItens(filter);
+        setProductItems(filter);
         setQuantityProduct(inputQuantity);
       }
     }

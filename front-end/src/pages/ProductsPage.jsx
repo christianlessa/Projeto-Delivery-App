@@ -54,7 +54,8 @@ export default function ProductsPage({ history }) {
           <span
             data-testid="customer_products__checkout-bottom-value"
           >
-            { `R$ ${totalPrice}`}
+            {/* https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString */}
+            { totalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
           </span>
         </Button>
         { allProducts.map((product) => (
