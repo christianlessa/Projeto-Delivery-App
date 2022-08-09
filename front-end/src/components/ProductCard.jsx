@@ -9,7 +9,7 @@ export default function ProductCard({ product }) {
 
   const changeCartItens = (quantity) => {
     const filter = productItems.filter(({ id }) => id !== product.id);
-
+    // console.log(product.id);
     setProductItems([
       ...filter,
       { ...product, quantity },
@@ -53,7 +53,7 @@ export default function ProductCard({ product }) {
         <Card.Text
           data-testid={ `customer_products__element-card-price-${product.id}` }
         >
-          { `R$ ${product.price.replace('.', ',')}` }
+          {product.price.replace('.', ',')}
         </Card.Text>
         <Card.Img
           data-testid={ `customer_products__img-card-bg-image-${product.id}` }
@@ -77,8 +77,8 @@ export default function ProductCard({ product }) {
         <Button
           data-testid={ `customer_products__button-card-rm-item-${product.id}` }
           type="button"
-          onClick={ () => handleChange('minus') }
           disabled={ quantityProduct === 0 }
+          onClick={ () => handleChange('minus') }
           className="float-left"
         >
           -

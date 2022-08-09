@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 
@@ -9,7 +9,7 @@ function NavbarComponent() {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
-    if (user) setCurrentUser(user.user.name);
+    if (user) setCurrentUser(user.name);
   }, [currentUser, setCurrentUser]);
 
   const btnProducts = () => {
@@ -52,13 +52,14 @@ function NavbarComponent() {
             >
               { currentUser }
             </Nav.Link>
-            <Nav.Link
+            <Button
               data-testid="customer_products__element-navbar-link-logout"
               type="btn right"
               onClick={ btnLogout }
+              variant="outline-success"
             >
               Sair
-            </Nav.Link>
+            </Button>
           </Nav>
         </Navbar.Collapse>
       </Container>

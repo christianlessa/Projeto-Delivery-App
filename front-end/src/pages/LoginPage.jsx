@@ -14,7 +14,7 @@ function LoginPage() {
   const [invalidMessage, setInvalidMessage] = useState('hidden');
 
   const handleChange = ({ target: { name, value } }) => {
-    // console.log(name, value, inputState);
+    console.log(name, value, inputState);
     setInputState({
       ...inputState,
       [name]: value,
@@ -41,11 +41,11 @@ function LoginPage() {
       localStorage.clear(); // limpando localStorage
       localStorage.setItem('user', JSON.stringify(login));
       // console.log(login.user.role);
-      if (login.user.role === 'administrator') {
+      if (login.role === 'administrator') {
         history.push('/admin/manage');
-      } else if (login.user.role === 'customer') {
+      } else if (login.role === 'customer') {
         history.push('/customer/products');
-      } else if (login.user.role === 'seller') {
+      } else if (login.role === 'seller') {
         history.push('seller/orders');
       }
     } catch (error) {

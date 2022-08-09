@@ -6,15 +6,16 @@ import AppContext from '../context/AppContext';
 import deliveryAppAPI from '../services/deliveryAppAPI';
 import ProductCard from '../components/ProductCard';
 
-// Requisição API
+// Requisição API e alimentação LocalStorage
 const getAllProducts = async (setAllProducts, setCart) => {
   const productList = await deliveryAppAPI('getAllProducts');
   setAllProducts(productList.data);
+  // criação no localStorage
   const getLocalStorage = JSON.parse(localStorage.getItem('cart'));
 
   if (!getLocalStorage) {
-    const cart = [];
-    localStorage.setItem('cart', JSON.stringify(cart));
+    const cartItems = [];
+    localStorage.setItem('cart', JSON.stringify(cartItems));
   }
   if (getLocalStorage) {
     setCart(getLocalStorage);
@@ -22,7 +23,8 @@ const getAllProducts = async (setAllProducts, setCart) => {
 };
 
 export default function ProductsPage({ history }) {
-  const { allProducts, setAllProducts, setCart, totalPrice } = useContext(AppContext);
+  const {
+    allProducts, setAllProducts, setCart, totalPrice } = useContext(AppContext);
   const [btnStatus, setBtnStatus] = useState(true);
 
   useEffect(() => {
@@ -36,21 +38,25 @@ export default function ProductsPage({ history }) {
   useEffect(() => {
     if (Number(totalPrice) > 0) {
       setBtnStatus(false);
+    } else {
+      setBtnStatus(true);
     }
-    setBtnStatus(true);
   }, [totalPrice]);
 
   return (
     <div>
       <NavbarComponent />
       <Container>
+        { allProducts.map((product) => (
+          <ProductCard key={ product.name } product={ product } />
+        ))}
         <Button
           data-testid="customer_products__button-cart"
           type="button"
           disabled={ btnStatus }
           onClick={ toCheckoutPage }
         >
-          PREÇO TOTAL:
+          {'Ver Carrinho: '}
           <span
             data-testid="customer_products__checkout-bottom-value"
           >
@@ -58,9 +64,6 @@ export default function ProductsPage({ history }) {
             { totalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
           </span>
         </Button>
-        { allProducts.map((product) => (
-          <ProductCard key={ product.name } product={ product } />
-        ))}
       </Container>
     </div>
   );
