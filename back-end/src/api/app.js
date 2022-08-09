@@ -19,10 +19,9 @@ app.use(cors());
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 app.use('/customer/products', productRouter);
-app.use('/orders', orderRouter);
+app.use('/customer/checkout', orderRouter);
 
 app.use('/images', express.static(imagesUpload));
-
 
 // app.get('/coffee', (_req, res) => res.status(418).end());
 
