@@ -42,12 +42,17 @@ module.exports = {
         type: Sequelize.STRING(50),
         allowNull: false
       },
-      createdAt: {
+      sale_date: {
         allowNull: false,
-        type: Sequelize.DATE,
-        field: 'sale_date',
+        type: Sequelize.DATEONLY,
         defaultValue: Sequelize.NOW
       },
+      // createdAt: {
+      //   allowNull: false,
+      //   type: Sequelize.DATE,
+      //   field: 'sale_date',
+      //   defaultValue: Sequelize.NOW
+      // },
     });
   },
   async down(queryInterface, Sequelize) {

@@ -13,9 +13,14 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       field: 'product_id'
     },
+    quantity: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   },  { 
     tableName: 'salesProducts',
-    timestamps: false 
+    timestamps: false,
+    underscored: true
   });
 
   salesProduct.associate = function (models) {

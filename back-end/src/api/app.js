@@ -5,6 +5,7 @@ const path = require('path');
 const loginRouter = require('./routes/routesLogin');
 const registerRouter = require('./routes/routesRegister');
 const productRouter = require('./routes/routesProducts');
+const orderRouter = require('./routes/routesOrder');
 
 // https://expressjs.com/pt-br/starter/static-files.html
 
@@ -18,7 +19,10 @@ app.use(cors());
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 app.use('/customer/products', productRouter);
+app.use('/orders', orderRouter);
+
 app.use('/images', express.static(imagesUpload));
+
 
 // app.get('/coffee', (_req, res) => res.status(418).end());
 
