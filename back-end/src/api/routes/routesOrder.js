@@ -1,8 +1,10 @@
 const router = require('express').Router();
 
-const { createNewOrder } = require('../controllers/controllerOrders');
+const { createNewOrder, getAllSales, getSaleById } = require('../controllers/controllerOrders');
 const validateJWT = require('../helpers/validateJWT');
 
-router.post('/', validateJWT, createNewOrder);
+router.post('/customer/orders', validateJWT, createNewOrder);
+router.get('/customer/orders', getAllSales);
+router.get('/customer/orders/:id', getSaleById);
 
 module.exports = router;
