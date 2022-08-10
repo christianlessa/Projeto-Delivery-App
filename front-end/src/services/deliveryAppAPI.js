@@ -38,6 +38,7 @@ export default async function deliveryAppAPI(input, bodyValue) {
       data: bodyValue,
       headers: { authorization: token },
     });
+    console.log(newOrder);
     return newOrder;
   }
   default:

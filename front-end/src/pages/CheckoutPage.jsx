@@ -50,7 +50,7 @@ export default function CheckoutPage() {
       const checkoutToOrderAPI = await deliveryAppAPI('newOrder', getNewOrder);
       history.push(`/customer/order/${checkoutToOrderAPI.data.id}`);
     } catch (error) {
-      console.log('error');
+      console.log(error);
     }
   };
 

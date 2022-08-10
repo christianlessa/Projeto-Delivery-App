@@ -19,7 +19,7 @@ app.use(cors());
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 app.use('/customer/products', productRouter);
-app.use('/customer/checkout', orderRouter);
+app.use('/customer/orders', orderRouter);
 
 app.use('/images', express.static(imagesUpload));
 
