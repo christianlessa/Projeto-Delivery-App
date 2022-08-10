@@ -1,12 +1,12 @@
 const serviceUser = require('../services/serviceLogin');
 
-const controllerLogin = async (req, res, _next) => {
+const controllerLogin = async (req, res, next) => {
     try {
-        const { email, password } = req.body;
-        const newLogin = await serviceUser.loginValidator({ email, password });
+        const data = req.body;
+        const newLogin = await serviceUser.loginValidator(data);
         return res.status(200).json(newLogin);
     } catch (error) {
-        return res.status(404).json({ message: error.message });
+        next(error);
     }
 };
 

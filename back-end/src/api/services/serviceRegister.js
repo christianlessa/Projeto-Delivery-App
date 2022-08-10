@@ -6,10 +6,7 @@ const createUser = async (data) => {
     const { name, email, role, password } = data;
     const user = await model.user.findOne({ where: { email } });
 
-    if (user) {
-        const message = 'User already registered';
-        throw new Error(message);
-    }
+    if (user) throw new Error('UserNotFound');
 
     const hashPassword = md5(password);
     const { id } = await model.user.create({ email, role, password: hashPassword, name });
