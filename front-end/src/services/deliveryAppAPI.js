@@ -34,7 +34,7 @@ export default async function deliveryAppAPI(input, bodyValue) {
     const { token } = JSON.parse(localStorage.getItem('user'));
     const newOrder = await axios({
       method: 'post',
-      url: 'http://localhost:3001/customer/checkout',
+      url: 'http://localhost:3001/customer/orders',
       data: bodyValue,
       headers: { authorization: token },
     });

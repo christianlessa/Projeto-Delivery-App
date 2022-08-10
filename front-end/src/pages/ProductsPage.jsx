@@ -47,6 +47,20 @@ export default function ProductsPage({ history }) {
     <div>
       <NavbarComponent />
       <Container>
+        <Button
+          data-testid="customer_products__button-cart"
+          type="button"
+          disabled={ btnStatus }
+          onClick={ toCheckoutPage }
+        >
+          {'Ver Carrinho: '}
+          <span
+            data-testid="customer_products__checkout-bottom-value"
+          >
+            {/* https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString */}
+            { totalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+          </span>
+        </Button>
         { allProducts.map((product) => (
           <ProductCard key={ product.name } product={ product } />
         ))}

@@ -23,7 +23,7 @@ function TableCardComp({ name, price, index, subtotal, quantity, removeItem, id 
       <td
         data-testid={ `customer_checkout__element-order-table-unit-price-${index}` }
       >
-        { Number(price).replace('.', ',') }
+        { price }
       </td>
       <td
         data-testid={ `customer_checkout__element-order-table-sub-total-${index}` }

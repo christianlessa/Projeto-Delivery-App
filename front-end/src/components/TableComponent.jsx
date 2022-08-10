@@ -33,8 +33,10 @@ function TableComponent() {
               index={ index }
               id={ cart.id }
               name={ cart.name }
-              quantity={ cart.id }
+              quantity={ cart.quantity }
               removeItem={ removeItem }
+              price={ (cart.price * 1)
+                .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }
               subtotal={
                 (cart.quantity * cart.price)
                   .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
