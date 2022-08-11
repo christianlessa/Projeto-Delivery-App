@@ -27,28 +27,31 @@ export default function CheckoutPage() {
   const submitBtn = async () => {
     const { deliveryAddress, deliveryNumber } = inputState;
 
-    const userLocalStorage = JSON.parse(localStorage.getItem('user'));
-    const { name } = userLocalStorage;
+    // const userLocalStorage = JSON.parse(localStorage.getItem('user'));
+    // const { name } = userLocalStorage;
 
-    const userId = userLocalStorage.id;
-    const status = 'Pendente';
+    // const userId = userLocalStorage.id;
+    // const status = 'Pendente';
 
-    const sellerId = 2;
-    const salesProducts = productItems;
+    const sellerName = sellerList;
+    const products = productItems.map((product) => {
+      const object = {
+        id: product.id,
+        quantity: product.quantity,
+      };
+      return object;
+    });
 
     const getNewOrder = {
+      sellerName,
+      products,
       totalPrice,
       deliveryAddress,
       deliveryNumber,
-      status,
-      userId,
-      sellerId,
-      name,
-      salesProducts,
     };
     try {
       const checkoutToOrderAPI = await deliveryAppAPI('newOrder', getNewOrder);
-      history.push(`/customer/order/${checkoutToOrderAPI.data.id}`);
+      history.push(`/customer/orders/${checkoutToOrderAPI.data.id}`);
     } catch (error) {
       console.log(error);
     }
