@@ -6,6 +6,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import ProductsPage from './pages/ProductsPage';
 import CheckoutPage from './pages/CheckoutPage';
+import DetailsOrder from './pages/DetailsOrder';
 // import rockGlass from './images/rockGlass.svg';
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
       <Route exact path="/register" component={ RegisterPage } />
       <Route exact path="/customer/products" component={ ProductsPage } />
       <Route exact path="/customer/checkout" component={ CheckoutPage } />
-      <Route exact path="/customer/orders/:orderId" component={ null } />
+      <Route exact path="/customer/orders/:orderId" component={ DetailsOrder } />
     </Switch>
 
   );

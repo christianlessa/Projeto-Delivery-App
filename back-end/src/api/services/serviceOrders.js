@@ -14,7 +14,7 @@ const ORDER = Joi.object({
   ),
   totalPrice: Joi.number().required(),
   deliveryAddress: Joi.string().required(),
-  deliveryNumber: Joi.number().integer().required(),
+  deliveryNumber: Joi.string().required(),
 });
 
 const checkSeller = async (sellerName) => {
