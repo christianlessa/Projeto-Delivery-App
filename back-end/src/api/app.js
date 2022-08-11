@@ -17,10 +17,10 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use('/login', loginRouter);
-app.use('/register', registerRouter);
-app.use('/customer/products', productRouter);
-app.use('/customer/orders', orderRouter);
+app.use(loginRouter);
+app.use(registerRouter);
+app.use(productRouter);
+app.use(orderRouter);
 app.use(error);
 
 app.use('/images', express.static(imagesUpload));

@@ -22,6 +22,16 @@ const checkSeller = async (sellerName) => {
   return id;
 };
 
+const getAllSales = async () => {
+  const sales = await sale.findAll();
+  return sales;
+}
+
+const getSaleById = async (id) => {
+  const saleById = await sale.findOne({ where: { id } });
+  return saleById;
+}
+
 const createSalesProduct = async (saleId, products) => {
   const newSalesProduct = await products.map((product) => (
     { saleId, productId: product.id, quantity: product.quantity }
@@ -57,4 +67,6 @@ const createNewOrder = async (userId, data) => {
 
 module.exports = {
   createNewOrder,
+  getAllSales,
+  getSaleById
 };
