@@ -1,6 +1,6 @@
 const serviceRegister = require('../services/serviceRegister');
 
-const controllerRegister = async (req, res, _next) => {
+const controllerRegister = async (req, res, next) => {
   try {
     const { name, email, role, password } = req.body;
     const createUser = await serviceRegister.createUser({
@@ -11,7 +11,7 @@ const controllerRegister = async (req, res, _next) => {
     });
     return res.status(201).json(createUser);
   } catch (error) {
-    return res.status(409).json({ message: error.message });
+     next(error);
   }
 };
 

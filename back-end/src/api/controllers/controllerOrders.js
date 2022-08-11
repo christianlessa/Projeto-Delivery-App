@@ -28,7 +28,7 @@ const createNewOrder = async (req, res, _next) => {
     const newOrder = await serviceOrders.createNewOrder(userId, data);
     return res.status(201).json(newOrder);
   } catch (error) {
-    return res.status(409).json({ message: error.message });
+    next(error);
   }
 };
 

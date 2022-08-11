@@ -30,6 +30,17 @@ export default async function deliveryAppAPI(input, bodyValue) {
       return 'exists';
     }
   }
+  case 'newOrder': {
+    const { token } = JSON.parse(localStorage.getItem('user'));
+    const newOrder = await axios({
+      method: 'post',
+      url: 'http://localhost:3001/customer/orders',
+      data: bodyValue,
+      headers: { authorization: token },
+    });
+    console.log(newOrder);
+    return newOrder;
+  }
   default:
     return console.log('error');
   }
