@@ -6,6 +6,7 @@ const loginRouter = require('./routes/routesLogin');
 const registerRouter = require('./routes/routesRegister');
 const productRouter = require('./routes/routesProducts');
 const orderRouter = require('./routes/routesOrder');
+const sellerRouter = require('./routes/routesSellers');
 const error = require('./middlewares/errorMiddleware');
 
 // https://expressjs.com/pt-br/starter/static-files.html
@@ -21,10 +22,9 @@ app.use(loginRouter);
 app.use(registerRouter);
 app.use(productRouter);
 app.use(orderRouter);
-<<<<<<< HEAD
-=======
+app.use(sellerRouter);
+
 app.use(error);
->>>>>>> 981a91d754c2745699886bd3374b9a1ded97c30d
 
 app.use('/images', express.static(imagesUpload));
 
