@@ -1,4 +1,3 @@
-const moment = require('moment');
 const Joi = require('joi');
 const { sale, salesProduct, user } = require('../../database/models');
 
@@ -14,7 +13,7 @@ const ORDER = Joi.object({
   ),
   totalPrice: Joi.number().required(),
   deliveryAddress: Joi.string().required(),
-  deliveryNumber: Joi.number().integer().required(),
+  deliveryNumber: Joi.string().required(),
 });
 
 const checkSeller = async (sellerName) => {
@@ -23,14 +22,17 @@ const checkSeller = async (sellerName) => {
 };
 
 const getAllSales = async () => {
-  const sales = await sale.findAll();
-  return sales;
-}
+  const allSales = await sale.findAll();
+  return allSales;
+};
 
 const getSaleById = async (id) => {
   const saleById = await sale.findOne({ where: { id } });
+
+  if (!saleById) throw new Error('SaleNotFound');
+
   return saleById;
-}
+};
 
 const createSalesProduct = async (saleId, products) => {
   const newSalesProduct = await products.map((product) => (
@@ -41,7 +43,7 @@ const createSalesProduct = async (saleId, products) => {
 
 const createNewOrder = async (userId, data) => {
   const { error } = ORDER.validate(data);
-  if (error) throw new Error('empty field');
+  if (error) throw error;
   
   const { totalPrice, deliveryAddress, deliveryNumber } = data;
   const sellerId = await checkSeller(data.sellerName);
@@ -68,5 +70,5 @@ const createNewOrder = async (userId, data) => {
 module.exports = {
   createNewOrder,
   getAllSales,
-  getSaleById
+  getSaleById,
 };

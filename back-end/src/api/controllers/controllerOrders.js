@@ -1,27 +1,27 @@
 const serviceOrders = require('../services/serviceOrders');
 
-const getAllSales = async (req, res) => {
+const getAllSales = async (_req, res, next) => {
   try {
     const sales = await serviceOrders.getAllSales();
 
     return res.status(200).json(sales);
   } catch (error) {
-    return res.status(400).json({ message: error.message });
+    next(error);
   }
-}
+};
 
-const getSaleById = async (req, res) => {
+const getSaleById = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const getSaleById = await serviceOrders.getSaleById(id);
+    const sale = await serviceOrders.getSaleById(id);
 
-    return res.status(200).json(getSaleById);
+    return res.status(200).json(sale);
   } catch (error) {
-    return res.status(400).json({ message: error.message });
+    next(error);
   }
-}
+};
 
-const createNewOrder = async (req, res, _next) => {
+const createNewOrder = async (req, res, next) => {
   try {
     const { id: userId } = req.user;
     const data = req.body;

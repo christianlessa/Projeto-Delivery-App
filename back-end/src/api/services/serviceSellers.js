@@ -1,10 +1,13 @@
-const { sale, salesProduct, user } = require('../../database/models');
+const { sale } = require('../../database/models');
 
-const getIdSales = async () => {
-    const sales = await sale.findAll();
-      return sales.map((data)=>data.id); //retorna um array com id de todas as vendas
-    }
+const getSellerSales = async (id) => {
+  const sellerSales = await sale.findAll({ where: { sellerId: id } });
 
-  module.exports = {
-    getIdSales
-  }
+  if (sellerSales.length === 0) throw new Error('SaleNotFound');
+
+  return sellerSales;
+};
+
+module.exports = {
+  getSellerSales,
+};

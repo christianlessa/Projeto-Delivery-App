@@ -1,15 +1,16 @@
 const serviceSellers = require('../services/serviceSellers');
 
-const getIdSales = async (_req, res, _next) => {
+const getSellerSales = async (req, res, next) => {
   try {
-    const sales = await serviceSellers.getIdSales();
+    const { id } = req.params;
+    const sellerSales = await serviceSellers.getSellerSales(id);
     
-    return res.status(200).json(sales);
+    return res.status(200).json(sellerSales);
   } catch (error) {
-    return res.status(409).json({ message: error.message });
+    next(error);
   }
 };
 
 module.exports = {
-  getIdSales,
+  getSellerSales,
 };
