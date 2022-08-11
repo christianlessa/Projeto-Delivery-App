@@ -34,7 +34,7 @@ const createNewOrder = async (userId, data) => {
     deliveryAddress,
     deliveryNumber,
     status: 'Pendente',
-    saleDate: moment().format('L'),
+    saleDate: Date.now(),
   });
 
   await createSalesProduct(id, data.products);

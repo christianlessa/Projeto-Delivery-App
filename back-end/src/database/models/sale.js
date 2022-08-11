@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     deliveryAddress: { type: DataTypes.STRING(100), allowNull: false },
     deliveryNumber: { type: DataTypes.STRING(50), allowNull: false },
     status: { type: DataTypes.STRING(50), allowNull: false },
-    saleDate: { type: DataTypes.DATEONLY, allowNull: false },
+    saleDate: { type: DataTypes.DATE, allowNull: false },
   }, 
   { 
     // createdAt: "sale_date",

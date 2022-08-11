@@ -44,7 +44,7 @@ module.exports = {
       },
       sale_date: {
         allowNull: false,
-        type: Sequelize.DATEONLY,
+        type: Sequelize.DATE,
         defaultValue: Sequelize.NOW
       },
       // createdAt: {

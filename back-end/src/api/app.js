@@ -23,7 +23,6 @@ app.use(orderRouter);
 
 app.use('/images', express.static(imagesUpload));
 
-
 // app.get('/coffee', (_req, res) => res.status(418).end());
 
 module.exports = app;
