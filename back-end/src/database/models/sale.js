@@ -2,8 +2,8 @@
 module.exports = (sequelize, DataTypes) => {
   const Sale = sequelize.define('sale', {
     id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true, allowNull: false},
-    userId: { type: DataTypes.INTEGER, allowNull: false, foreignKey: true, field: 'user_id' },
-    sellerId: { type: DataTypes.INTEGER, allowNull: false, foreignKey: true, field: 'seller_id' },
+    userId: { type: DataTypes.INTEGER, allowNull: false, foreignKey: true },
+    sellerId: { type: DataTypes.INTEGER, allowNull: false, foreignKey: true },
     totalPrice: { type: DataTypes.DECIMAL(9, 2), allowNull: false },
     deliveryAddress: { type: DataTypes.STRING(100), allowNull: false },
     deliveryNumber: { type: DataTypes.STRING(50), allowNull: false },
@@ -21,11 +21,11 @@ module.exports = (sequelize, DataTypes) => {
   Sale.associate = function (models) {
     models.sale.belongsTo(models.user,
       {
-        foreignKey: "user_id", as: 'Customer'
+        foreignKey: "userId", as: 'Customer'
       }),
       models.sale.belongsTo(models.user,
       {
-        foreignKey: "seller_id", as: 'Seller'
+        foreignKey: "sellerId", as: 'Seller'
       })
   }
   return Sale;

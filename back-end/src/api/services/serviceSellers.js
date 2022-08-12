@@ -8,6 +8,16 @@ const getSellerSales = async (id) => {
   return sellerSales;
 };
 
+const updateStatus = async (id, status) => {
+  const [updateSale] = await sale.update(
+    { status },
+    { where: { id } },
+  );
+
+  if (!updateSale) throw new Error('SaleNotFound');
+};
+
 module.exports = {
   getSellerSales,
+  updateStatus,
 };
