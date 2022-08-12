@@ -59,7 +59,7 @@ function LoginPage() {
 
   useEffect(() => {
     // eslint-disable-next-line no-useless-escape
-    const emailRegexValidator = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+    const emailRegexValidator = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     const emailValidator = emailRegexValidator.test(inputState.email);
     const magicNumber = 5;
     const passwordValidator = inputState.password.length > magicNumber;

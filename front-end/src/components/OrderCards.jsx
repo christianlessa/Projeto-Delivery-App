@@ -3,6 +3,10 @@ import { Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 function OrderCard({ id, totalPriceValue, saleDate, status }) {
+  const price = totalPriceValue
+    .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+    .replace('.', ',');
+
   return (
     <Card>
       <Card.Body>
@@ -25,8 +29,7 @@ function OrderCard({ id, totalPriceValue, saleDate, status }) {
         <Card.Text
           data-testid={ `customer_orders__element-card-price-${id}` }
         >
-          { totalPriceValue
-            .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+          { `R$: ${price}` }
         </Card.Text>
       </Card.Body>
     </Card>
