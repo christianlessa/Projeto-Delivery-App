@@ -32,8 +32,20 @@ const createNewOrder = async (req, res, next) => {
   }
 };
 
+const updateStatus = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    await serviceOrders.updateStatus(id);
+    
+    return res.status(200).json({ message: 'Status atualizado com sucesso!' });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   createNewOrder,
   getAllSales,
   getSaleById,
+  updateStatus,
 };

@@ -67,8 +67,18 @@ const createNewOrder = async (userId, data) => {
   return newSale;
 };
 
+const updateStatus = async (id) => {
+  const [updateSale] = await sale.update(
+    { status: 'Entregue' },
+    { where: { id } },
+  );
+
+  if (!updateSale) throw new Error('SaleNotFound');
+};
+
 module.exports = {
   createNewOrder,
   getAllSales,
   getSaleById,
+  updateStatus,
 };
