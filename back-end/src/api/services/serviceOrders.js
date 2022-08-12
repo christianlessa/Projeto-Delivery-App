@@ -1,5 +1,5 @@
 const Joi = require('joi');
-const { sale, salesProduct, user } = require('../../database/models');
+const { sale, salesProduct, user, product } = require('../../database/models');
 
 const ORDER = Joi.object({
   sellerName: Joi.string().required(),
@@ -35,8 +35,8 @@ const getSaleById = async (id) => {
 };
 
 const createSalesProduct = async (saleId, products) => {
-  const newSalesProduct = await products.map((product) => (
-    { saleId, productId: product.id, quantity: product.quantity }
+  const newSalesProduct = await products.map((element) => (
+    { saleId, productId: element.id, quantity: element.quantity }
   ));
   await salesProduct.bulkCreate(newSalesProduct);
 };
@@ -57,18 +57,27 @@ const createNewOrder = async (userId, data) => {
     status: 'Pendente',
     saleDate: Date.now(),
   });
-
   await createSalesProduct(id, data.products);
-
   const newSale = { 
     id, userId, sellerId, totalPrice, deliveryAddress, deliveryNumber, saleDate, status,
   };
-
   return newSale;
+};
+
+const getAllByUserId = async (userId) => {
+  console.log(userId);
+  const ordersFromDb = await sale.findAll({
+    where: { userId },
+      include: [
+      { model: product, as: 'products' },
+      { model: user, as: 'seller' },
+    ] });
+  return ordersFromDb;
 };
 
 module.exports = {
   createNewOrder,
   getAllSales,
   getSaleById,
+  getAllByUserId,
 };

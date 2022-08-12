@@ -1,7 +1,7 @@
 const errors = (errorMessage) => {
   switch (errorMessage) {
     case 'Invalid login':
-      return { status: 401, message: 'Incorrect email or password' };
+      return { status: 404, message: 'Incorrect email or password' };
 
     case 'SaleNotFound':
       return { status: 404, message: 'Sale or seller does not exist' };
