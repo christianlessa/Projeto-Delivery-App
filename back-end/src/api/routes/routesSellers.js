@@ -1,8 +1,8 @@
 const router = require('express').Router();
 
-const { getIdSales } = require('../controllers/controllerSellers');
-const validateJWT = require('../helpers/validateJWT');
+const { getSellerSales } = require('../controllers/controllerSellers');
+const sellerValidate = require('../helpers/sellerValidate');
 
-router.get('/seller/orders', getIdSales);
+router.get('/seller/orders/:id', sellerValidate, getSellerSales);
 
 module.exports = router;

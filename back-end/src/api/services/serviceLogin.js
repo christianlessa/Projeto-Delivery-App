@@ -10,7 +10,7 @@ const USER = Joi.object({
 
 const loginValidator = async (data) => {
   const { error } = USER.validate(data);
-  if (error) throw new Error('empty field');
+  if (error) throw error;
 
   const { email, password } = data;
   const hashPassword = md5(password);
