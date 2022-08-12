@@ -32,13 +32,23 @@ const createNewOrder = async (req, res, next) => {
   }
 };
 
+const getAllOrderByUserId = async (req, res, next) => {
+  try {
+    const { userId } = req.body;
+    const serviceResponse = await serviceOrders.getAllByUserId(userId);
+    return res.status(200).json(serviceResponse);
+  } catch (error) {
+    next(error);
+  }
+};
+
 const updateStatus = async (req, res, next) => {
   try {
     const { id } = req.params;
     await serviceOrders.updateStatus(id);
     
     return res.status(200).json({ message: 'Status atualizado com sucesso!' });
-  } catch (error) {
+} catch (error) {
     next(error);
   }
 };
@@ -47,5 +57,6 @@ module.exports = {
   createNewOrder,
   getAllSales,
   getSaleById,
+  getAllOrderByUserId,
   updateStatus,
 };
