@@ -11,6 +11,19 @@ const getSellerSales = async (req, res, next) => {
   }
 };
 
+const updateStatus = async (req, res, next) => {
+  try {
+    const { status } = req.body;
+    const { id } = req.params;
+    await serviceSellers.updateStatus(id, status);
+    
+    return res.status(200).json({ message: 'Status atualizado com sucesso!' });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   getSellerSales,
+  updateStatus,
 };
