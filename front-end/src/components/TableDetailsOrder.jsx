@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function TableDetailsOrder({ products }) {
+  console.log(products);
   return (
     <table>
       <thead>
@@ -18,10 +19,10 @@ export default function TableDetailsOrder({ products }) {
           <tr key={ index } className="order-card">
             <td>{ detail.id }</td>
             <td>{ detail.name }</td>
-            <td>{ detail.salesProducts.quantity }</td>
+            <td>{ detail.salesProduct.quantity }</td>
             <td>{ `R$ ${detail.price.replace('.', ',')}` }</td>
             <td>
-              { (detail.price * detail.salesProducts.quantity)
+              { (detail.price * detail.salesProduct.quantity)
                 .toLocaleString('pt-BR', {
                   style: 'currency',
                   currency: 'BRL' }) }

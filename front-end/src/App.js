@@ -6,7 +6,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import ProductsPage from './pages/ProductsPage';
 import CheckoutPage from './pages/CheckoutPage';
-import DetailsOrder from './pages/DetailsOrder';
+import OrderDetailsPage from './pages/OrderDetailsPage';
 import CustomerOrdersPage from './pages/CustomerOrdersPage';
 // import rockGlass from './images/rockGlass.svg';
 
@@ -19,7 +19,7 @@ function App() {
       <Route exact path="/customer/products" component={ ProductsPage } />
       <Route exact path="/customer/checkout" component={ CheckoutPage } />
       <Route exact path="/customer/orders" component={ CustomerOrdersPage } />
-      <Route exact path="/customer/orders/:orderId" component={ DetailsOrder } />
+      <Route exact path="/customer/orders/:orderId" component={ OrderDetailsPage } />
     </Switch>
 
   );
