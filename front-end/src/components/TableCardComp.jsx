@@ -45,7 +45,6 @@ function TableCardComp({ name, price, index, subtotal, quantity, removeItem, id 
 
 TableCardComp.propTypes = {
   price: PropTypes.number,
-  thumbnail: PropTypes.string,
   title: PropTypes.string,
 }.isRequire;
 
