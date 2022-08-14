@@ -35,6 +35,8 @@ export default function OrderDetailsPage() {
 
   if (customerOrderList.length === 0) requestAllOrdersAPI();
 
+  const dataTestId = 'customer_order_details__element-';
+
   return (customerOrderList.length === 0 ? <span>Carregando...</span>
     : (
       <div>
@@ -45,7 +47,7 @@ export default function OrderDetailsPage() {
             <h3>
               {'Pedido '}
               <span
-                data-testid="customer_order_details__element-details-label-order-id"
+                data-testid={ `${dataTestId}order-details-label-order-id` }
               >
                 {customerOrderList.id}
               </span>
@@ -53,27 +55,25 @@ export default function OrderDetailsPage() {
             <p>
               {'P. Vend: '}
               <span
-                data-testid={ `customer_order_details__element-
-                order-details-label-seller-name` }
+                data-testid={ `${dataTestId}order-details-label-seller-name` }
               >
                 {customerOrderList.seller.name}
               </span>
             </p>
             <p
-              data-testid="customer_order_details__element-order-details-label-order-date"
+              data-testid={ `${dataTestId}order-details-label-order-date` }
             >
               {customerOrderList.saleDate}
             </p>
             <p
-              data-testid={ `customer_order_details__element-
-              order-details-label-delivery-status` }
+              data-testid={ `${dataTestId}order-details-label-delivery-status` }
             >
               {customerOrderList.status}
             </p>
             <button
+              data-testid="customer_order_details__button-delivery-check"
               type="button"
               disabled={ customerOrderList.status !== 'Entregue' }
-              data-testid="customer_order_details__button-delivery-check"
             >
               Marcar como entregue
             </button>

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function TableDetailsOrder({ products }) {
-  console.log(products);
+  const dataTestId = 'customer_order_details__element-';
   return (
     <table>
       <thead>
@@ -17,11 +17,19 @@ export default function TableDetailsOrder({ products }) {
       <tbody>
         {products.map((detail, index) => (
           <tr key={ index } className="order-card">
-            <td>{ detail.id }</td>
-            <td>{ detail.name }</td>
-            <td>{ detail.salesProduct.quantity }</td>
-            <td>{ `R$ ${detail.price.replace('.', ',')}` }</td>
-            <td>
+            <td data-testid={ `${dataTestId}order-table-item-number-${detail.id}` }>
+              { detail.id }
+            </td>
+            <td data-testid={ `${dataTestId}order-table-name-${detail.id}` }>
+              { detail.name }
+            </td>
+            <td data-testid={ `${dataTestId}order-table-quantity-${detail.id}` }>
+              { detail.salesProduct.quantity }
+            </td>
+            <td data-testid={ `${dataTestId}order-table-sub-total-${detail.id}` }>
+              { `R$ ${detail.price.replace('.', ',')}` }
+            </td>
+            <td data-testid={ `${dataTestId}order-total-price-${detail.id}` }>
               { (detail.price * detail.salesProduct.quantity)
                 .toLocaleString('pt-BR', {
                   style: 'currency',
