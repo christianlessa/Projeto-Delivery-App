@@ -11,9 +11,6 @@ const errors = (errorMessage) => {
      
     case 'invalid token':
       return { status: 401, message: 'Expired or invalid token' };
-
-    case 'UserNotFound':
-      return { status: 404, message: 'User does not exist' };
       
     default: 
       return { status: 500, message: errorMessage };

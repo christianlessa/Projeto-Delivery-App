@@ -27,14 +27,14 @@ const createUser = async (data) => {
 const getAllUser = async () => {
   const users = await model.user.findAll();
   return users;
-}
+};
 
 const deleteUser = async (id) => {
   const user = await model.user.findOne({ where: { id } });
-  if (!user) throw new Error('UserNotFound');
+  if (!user) throw new Error('User not find');
 
   await model.user.destroy({ where: { id } });
-}
+};
 
 module.exports = {
     createUser,
