@@ -91,4 +91,3 @@ module.exports = {
   getAllByUserId,
   updateStatus,
 };
-

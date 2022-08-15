@@ -22,17 +22,17 @@ const getAllUser = async (_req, res, next) => {
   } catch (error) {
     next(error);
   }
-}
+};
 
 const deleteUser = async (req, res, next) => {
   try {
     const { id } = req.params;
     await serviceAdmin.deleteUser(id);
-    return res.status(202).json({ message: 'Usuário excluído com sucesso!' })
+    return res.status(202).json({ message: 'Usuário excluído com sucesso!' });
   } catch (error) {
     next(error);
   }
-}
+};
 
 module.exports = {
   createUser,

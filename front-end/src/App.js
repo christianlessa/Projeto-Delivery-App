@@ -8,6 +8,7 @@ import ProductsPage from './pages/ProductsPage';
 import CheckoutPage from './pages/CheckoutPage';
 import OrderDetailsPage from './pages/OrderDetailsPage';
 import CustomerOrdersPage from './pages/CustomerOrdersPage';
+import AdminPage from './pages/AdminPage';
 // import rockGlass from './images/rockGlass.svg';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <Route exact path="/customer/checkout" component={ CheckoutPage } />
       <Route exact path="/customer/orders" component={ CustomerOrdersPage } />
       <Route exact path="/customer/orders/:orderId" component={ OrderDetailsPage } />
+      <Route exact path="/admin/manage" component={ AdminPage } />
     </Switch>
 
   );
