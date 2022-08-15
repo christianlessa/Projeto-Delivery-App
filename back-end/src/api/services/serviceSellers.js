@@ -8,13 +8,14 @@ const getSellerSales = async (id) => {
   return sellerSales;
 };
 
-const updateStatus = async (id, status) => {
+const updateStatus = async (orderId, status) => {
   const [updateSale] = await sale.update(
     { status },
-    { where: { id } },
+    { where: { id: orderId } },
   );
-
   if (!updateSale) throw new Error('SaleNotFound');
+  const orderStatusUpdated = await sale.findOne({ id: orderId });
+  return orderStatusUpdated;
 };
 
 module.exports = {

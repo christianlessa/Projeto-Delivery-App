@@ -7,6 +7,8 @@ import App from './App';
 import AppProvider from './context/AppProvider';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
+// Não ativar para dar push
+
 ReactDOM.render(
   <BrowserRouter>
     <AppProvider>

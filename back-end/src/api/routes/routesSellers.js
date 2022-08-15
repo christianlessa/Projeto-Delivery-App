@@ -4,6 +4,6 @@ const { getSellerSales, updateStatus } = require('../controllers/controllerSelle
 const sellerValidate = require('../helpers/sellerValidate');
 
 router.get('/seller/orders/:id', sellerValidate, getSellerSales);
-router.put('/seller/orders/:id', updateStatus);
+router.put('/seller/orders/', updateStatus);
 
 module.exports = router;

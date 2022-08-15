@@ -13,11 +13,10 @@ const getSellerSales = async (req, res, next) => {
 
 const updateStatus = async (req, res, next) => {
   try {
-    const { status } = req.body;
-    const { id } = req.params;
-    await serviceSellers.updateStatus(id, status);
+    const { status, orderId } = req.body;
+    const appResponse = await serviceSellers.updateStatus(orderId, status);
     
-    return res.status(200).json({ message: 'Status atualizado com sucesso!' });
+    return res.status(200).json(appResponse);
   } catch (error) {
     next(error);
   }
