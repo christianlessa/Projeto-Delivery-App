@@ -7,6 +7,7 @@ const registerRouter = require('./routes/routesRegister');
 const productRouter = require('./routes/routesProducts');
 const orderRouter = require('./routes/routesOrder');
 const sellerRouter = require('./routes/routesSellers');
+const adminRouter = require('./routes/routesAdmin');
 const error = require('./middlewares/errorMiddleware');
 
 // https://expressjs.com/pt-br/starter/static-files.html
@@ -23,6 +24,7 @@ app.use(registerRouter);
 app.use(productRouter);
 app.use(orderRouter);
 app.use(sellerRouter);
+app.use(adminRouter);
 
 app.use(error);
 
