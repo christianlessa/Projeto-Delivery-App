@@ -2,11 +2,19 @@ import axios from 'axios';
 
 async function sellerDeliveryAPI(caseInput, bodyValue) {
   switch (caseInput) {
+  case 'getSellerOrders': {
+    const allSellerOrders = await axios({
+      method: 'post',
+      url: 'http://localhost:3001/seller/orders',
+      data: bodyValue,
+    });
+    return allSellerOrders;
+  }
   case 'changeStatus':
     try {
       const updateStatus = await axios({
-        method: 'PUT',
-        url: 'http://localhost:3001/seller/orders/',
+        method: 'put',
+        url: 'http://localhost:3001/seller/orders',
         data: bodyValue,
       });
       return updateStatus;

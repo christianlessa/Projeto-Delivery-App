@@ -14,6 +14,7 @@ function CustomerOrdersPage() {
 
   const requestAllCustomerOrders = async () => {
     const APIResponse = await deliveryAPI('getOrdersByUserId', userIdObject);
+    console.log(APIResponse);
     const ordersList = APIResponse.data;
 
     setCustomerOrderList(ordersList);
@@ -41,6 +42,7 @@ function CustomerOrdersPage() {
           to={ `/customer/orders/${order.id}` }
         >
           <OrderCards
+            dataTestId="customer_orders__element-"
             id={ order.id }
             totalPriceValue={ order.totalPrice }
             saleDate={ ordDate }
