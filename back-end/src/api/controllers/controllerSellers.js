@@ -1,9 +1,9 @@
-const serviceSellers = require('../services/serviceSellers');
+const { getSellerSales, updateStatus } = require('../services/serviceSellers');
 
-const getSellerSales = async (req, res, next) => {
+const getSellerOrders = async (req, res, next) => {
   try {
-    const { id } = req.params;
-    const sellerSales = await serviceSellers.getSellerSales(id);
+    const { sellerId } = req.body;
+    const sellerSales = await getSellerSales(sellerId);
     
     return res.status(200).json(sellerSales);
   } catch (error) {
@@ -11,19 +11,18 @@ const getSellerSales = async (req, res, next) => {
   }
 };
 
-const updateStatus = async (req, res, next) => {
+const updateOrderStatus = async (req, res, next) => {
   try {
-    const { status } = req.body;
-    const { id } = req.params;
-    await serviceSellers.updateStatus(id, status);
+    const { status, orderId } = req.body;
+    const appResponse = await updateStatus(orderId, status);
     
-    return res.status(200).json({ message: 'Status atualizado com sucesso!' });
+    return res.status(200).json(appResponse);
   } catch (error) {
     next(error);
   }
 };
 
 module.exports = {
-  getSellerSales,
-  updateStatus,
+  getSellerOrders,
+  updateOrderStatus,
 };

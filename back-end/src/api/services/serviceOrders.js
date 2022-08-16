@@ -65,7 +65,6 @@ const createNewOrder = async (userId, data) => {
 };
 
 const getAllByUserId = async (userId) => {
-  console.log(userId);
   const ordersFromDb = await sale.findAll({
     where: { userId },
       include: [

@@ -41,6 +41,7 @@ function CustomerOrdersPage() {
           to={ `/customer/orders/${order.id}` }
         >
           <OrderCards
+            dataTestId="customer_orders__element-"
             id={ order.id }
             totalPriceValue={ order.totalPrice }
             saleDate={ ordDate }
