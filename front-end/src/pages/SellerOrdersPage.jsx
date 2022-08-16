@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Card, Container } from 'react-bootstrap';
 // import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import NavbarComponent from '../components/NavbarComponent';
 import OrderCard from '../components/OrderCards';
 import sellerDeliveryAPI from '../services/sellerDeliveryAPI';
@@ -36,18 +37,19 @@ function SellerOrdersPage() {
         date.slice(eight, teen)}/${date.slice(five, seven)}/${date.slice(0, four)
       }`;
       return (
-        <Card key={ index }>
-          <OrderCard
-            dataTestId="seller_orders__element-"
-            id={ product.id }
-            deliveryAddress={ `${product.deliveryAddress}, ${product.deliveryNumbers}` }
-            saleDate={ ordDate }
-            status={ product.status }
-            totalPriceValue={ product.totalPrice }
-          // onClick={ history.push(`/seller/orders/${product.id}`) }
-          />
-          <p>{ `${product.deliveryAddress}, ${product.deliveryNumber}` }</p>
-        </Card>
+        <Link key={ index } to={ `/seller/orders/${product.id}` }>
+          <Card key={ index }>
+            <OrderCard
+              dataTestId="seller_orders__element-"
+              id={ product.id }
+              deliveryAddress={ `${product.deliveryAddress}, ${product.deliveryNumbers}` }
+              saleDate={ ordDate }
+              status={ product.status }
+              totalPriceValue={ product.totalPrice }
+            />
+            <p>{ `${product.deliveryAddress}, ${product.deliveryNumber}` }</p>
+          </Card>
+        </Link>
       );
     });
   }

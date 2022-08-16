@@ -14,7 +14,6 @@ function CustomerOrdersPage() {
 
   const requestAllCustomerOrders = async () => {
     const APIResponse = await deliveryAPI('getOrdersByUserId', userIdObject);
-    console.log(APIResponse);
     const ordersList = APIResponse.data;
 
     setCustomerOrderList(ordersList);
