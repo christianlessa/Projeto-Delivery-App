@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Container, FloatingLabel, Form } from 'react-bootstrap';
+import { Button, Container, Form } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import deliveryAppAPI from '../services/deliveryAppAPI';
 
 // style:
-import './styles/LoginPageStyle.css';
+import './styles/RegisterPageStyle.css';
 import logo from '../images/logo.png';
 
 function RegisterPage() {
@@ -60,9 +60,9 @@ function RegisterPage() {
   }, [inputState]);
 
   return (
-    <Container>
-      <img src={ logo } alt="logo" />
-      <h1>Cadastro</h1>
+    <Container className="register-container">
+      <img src={ logo } alt="logo" className="register-logo" />
+      <h1 className="register-name-logo">Cadastro</h1>
       <div>
         <h2
           style={ { visibility: invalidMessage } }
@@ -72,9 +72,8 @@ function RegisterPage() {
         </h2>
       </div>
       <Form>
-        <Form.Label> Seu Nome</Form.Label>
+        <Form.Label>Nome</Form.Label>
         <Form.Control
-          as="textarea"
           data-testid="common_register__input-name"
           type="name"
           placeholder="Seu Nome"
@@ -83,9 +82,7 @@ function RegisterPage() {
           value={ inputState.name }
         />
 
-        <FloatingLabel
-          label="Email"
-        />
+        <Form.Label>Email</Form.Label>
         <Form.Control
           data-testid="common_register__input-email"
           type="email"
@@ -95,9 +92,7 @@ function RegisterPage() {
           value={ inputState.email }
         />
 
-        <FloatingLabel
-          label="Senha"
-        />
+        <Form.Label>Senha</Form.Label>
         <Form.Control
           data-testid="common_register__input-password"
           type="password"
@@ -107,7 +102,7 @@ function RegisterPage() {
           value={ inputState.password }
         />
 
-        <div>
+        <div className="register-button">
           <Button
             data-testid="common_register__button-register"
             type="button"

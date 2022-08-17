@@ -44,7 +44,7 @@ function LoginPage() {
       const login = await deliveryAppAPI('loginUser', user);
       localStorage.clear(); // limpando localStorage
       localStorage.setItem('user', JSON.stringify(login));
-      // console.log(login.user.role);
+
       if (login.role === 'administrator') {
         history.push('/admin/manage');
       } else if (login.role === 'customer') {
@@ -86,8 +86,8 @@ function LoginPage() {
         </h2>
       </div>
 
-      <img src={ logo } alt="logo" />
-      <h1> Name App </h1>
+      <img src={ logo } alt="logo" className="logo" />
+      <h1 className="name-logo"> Seu App de Delivery </h1>
       <Form autoComplete="off">
         <Form.Label label="Login">
           Login
@@ -111,26 +111,28 @@ function LoginPage() {
           onChange={ handleChange }
           value={ inputState.password }
         />
-        <div>
-          <Button
-            data-testid="common_login__button-login"
-            type="button"
-            variant="success"
-            disabled={ btnStatus }
-            onClick={ handleClick }
-          >
-            LOGIN
-          </Button>
-        </div>
+        <div className="login-buttons">
+          <div>
+            <Button
+              data-testid="common_login__button-login"
+              type="button"
+              variant="success"
+              disabled={ btnStatus }
+              onClick={ handleClick }
+            >
+              LOGIN
+            </Button>
+          </div>
 
-        <div>
-          <Button
-            data-testid="common_login__button-register"
-            type="button"
-            onClick={ toRegisterPage }
-          >
-            Ainda não tenho conta
-          </Button>
+          <div className="register-button">
+            <Button
+              data-testid="common_login__button-register"
+              type="button"
+              onClick={ toRegisterPage }
+            >
+              Criar conta
+            </Button>
+          </div>
         </div>
 
       </Form>

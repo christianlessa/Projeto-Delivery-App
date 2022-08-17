@@ -1,25 +1,57 @@
-.login-container {
-    top: 50%;
-    left: 50%;
-    position: absolute;
-    transform: translate(-50%, -50%);
+/* stylelint-disable comment-empty-line-before */
+/* stylelint-disable font-weight-notation */
+/* stylelint-disable length-zero-no-unit */
+/* stylelint-disable value-list-comma-space-before */
+/* stylelint-disable order/properties-alphabetical-order */
+.register-container {
+  top: 50%;
+  left: 50%;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url('../../images/cerveja');
 }
 
 h1 {
-    text-align: center;
+  text-align: center;
+}
+
+.register-logo {
+  width: 250px;
+  height: 250px;
+  padding-top: 0%;
+  margin-bottom: 30px;
+  border-radius: 200px;
+  border: rgb(111, 36, 9) solid 5px;
+}
+
+.register-name-logo {
+  font-family: initial, Geneva, Tahoma, sans-serif;
+  font-size: 35px;
+  font-weight: bold;
+  margin: 40px 0px;
+  padding-left: 0px;
+  color: rgb(111, 36, 9);
+  text-shadow: -1px -2px 0px white;
+  text-align: center;
+}
+
+.register-button {
+  text-align: center;
+  margin-top: 30px;
 }
 
 button {
-    display: flexbox;
-    border-right: 10%;
-    margin-top: 10px;
+  display: flexbox;
+  border-right: 10%;
+  margin-top: 10px;
 }
 
 .button-group {
-    text-align: center;
+  text-align: center;
 }
 
-img {
-    display: block;
-    margin: 0px auto;
-}

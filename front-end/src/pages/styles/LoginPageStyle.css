@@ -1,25 +1,52 @@
+/* stylelint-disable font-family-name-quotes */
+/* stylelint-disable comment-empty-line-before */
+/* stylelint-disable font-weight-notation */
+/* stylelint-disable length-zero-no-unit */
+/* stylelint-disable value-list-comma-space-before */
+/* stylelint-disable order/properties-alphabetical-order */
 .login-container {
-    top: 50%;
-    left: 50%;
-    position: absolute;
-    transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background-size: inherit;
+  background-image: url('../../images/cerveja3.webp');
 }
 
-h1 {
-    text-align: center;
+.logo {
+  width: 250px;
+  height: 250px;
+  padding-top: 0%;
+  margin-bottom: 30px;
+  border-radius: 200px;
+  border: rgb(111, 36, 9) solid 5px;
 }
+
+.name-logo {
+  font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+  font-weight: bold;
+  margin: 40px 0px;
+  padding-left: 0px;
+  color: white;
+  text-shadow: -1px -2px 0px black;
+  text-align: center;
+}
+
+.login-buttons {
+  text-align: center;
+  margin-top: 30px;
+}
+
 
 button {
-    display: flexbox;
-    border-right: 10%;
-    margin-top: 10px;
-}
-
-.button-group {
-    text-align: center;
+  display: flexbox;
+  border-right: 10%;
+  margin-top: 10px;
 }
 
 img {
-    display: block;
-    margin: 0px auto;
+  display: block;
+  margin: 0px auto;
 }

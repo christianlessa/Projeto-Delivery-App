@@ -15,7 +15,6 @@ function AdminPage() {
   const [userExists, setUserExists] = useState('hidden');
 
   const handleChange = ({ target: { name, value } }) => {
-    // console.log(name, value, inputState);
     setInputState({
       ...inputState,
       [name]: value,
