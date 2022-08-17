@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import deliveryAppAPI from '../services/deliveryAppAPI';
 import NavbarComponent from '../components/NavbarComponent';
 import TableDetailsOrder from '../components/TableDetailsOrder';
+import sellerDeliveryAPI from '../services/sellerDeliveryAPI';
 
 export default function OrderDetailsPage() {
   const [customerOrderList, setCustomerOrderList] = useState([]);
+  const [statusOrder, setStatusOrder] = useState({});
 
   const userId = JSON.parse(localStorage.getItem('user')).id;
   const userIdObj = { userId };
@@ -28,12 +30,30 @@ export default function OrderDetailsPage() {
     const date = order.saleDate;
     const dateToCard = `
     ${date.slice(eight, teen)}/${date.slice(five, seven)}/${date.slice(0, four)}`;
-
     order.saleDate = dateToCard;
     setCustomerOrderList(order);
   };
 
   if (customerOrderList.length === 0) requestAllOrdersAPI();
+
+  const completeBtn = () => {
+    const { orderId } = getParams;
+    setStatusOrder({
+      orderId,
+      status: 'Entregue',
+    });
+  };
+
+  useEffect(() => {
+    if (statusOrder.status) {
+      sellerDeliveryAPI('changeStatus', statusOrder);
+      requestAllOrdersAPI();
+    }
+  }, [statusOrder]);
+
+  useEffect(() => {
+    requestAllOrdersAPI();
+  }, []);
 
   const dataTestId = 'customer_order_details__element-';
 
@@ -73,12 +93,16 @@ export default function OrderDetailsPage() {
             <button
               data-testid="customer_order_details__button-delivery-check"
               type="button"
-              disabled={ customerOrderList.status !== 'Entregue' }
+              disabled={ customerOrderList.status !== 'Em Trânsito' }
+              onClick={ completeBtn }
             >
               Marcar como entregue
             </button>
           </section>
-          <TableDetailsOrder products={ customerOrderList.products } />
+          <TableDetailsOrder
+            products={ customerOrderList.products }
+            dataTestId="customer_order_details__element-"
+          />
           <h2>
             {'Total R$ '}
             <span
