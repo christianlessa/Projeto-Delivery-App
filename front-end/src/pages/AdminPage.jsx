@@ -132,7 +132,7 @@ function AdminPage() {
         </Form.Label>
 
         <Button
-          data-testid="admin_manage__button-registe"
+          data-testid="admin_manage__button-register"
           disabled={ btnStatus }
           onClick={ adminRegister }
           type="button"

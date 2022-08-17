@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function TableDetailsOrder({ products }) {
-  const dataTestId = 'customer_order_details__element-';
+export default function TableDetailsOrder({ products }, dataTestId) {
   return (
     <table>
       <thead>
