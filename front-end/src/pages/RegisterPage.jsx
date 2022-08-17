@@ -4,6 +4,10 @@ import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import deliveryAppAPI from '../services/deliveryAppAPI';
 
+// style:
+import './styles/LoginPageStyle.css';
+import logo from '../images/logo.png';
+
 function RegisterPage() {
   const history = useHistory();
   const [inputState, setInputState] = useState({
@@ -57,6 +61,7 @@ function RegisterPage() {
 
   return (
     <Container>
+      <img src={ logo } alt="logo" />
       <h1>Cadastro</h1>
       <div>
         <h2
@@ -67,10 +72,9 @@ function RegisterPage() {
         </h2>
       </div>
       <Form>
-        <FloatingLabel
-          label="nome"
-        />
+        <Form.Label> Seu Nome</Form.Label>
         <Form.Control
+          as="textarea"
           data-testid="common_register__input-name"
           type="name"
           placeholder="Seu Nome"

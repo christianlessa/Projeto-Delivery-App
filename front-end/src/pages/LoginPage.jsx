@@ -4,6 +4,10 @@ import { Container, Form, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import deliveryAppAPI from '../services/deliveryAppAPI';
 
+// style:
+import './styles/LoginPageStyle.css';
+import logo from '../images/logo.png';
+
 function LoginPage() {
   const history = useHistory();
   const [inputState, setInputState] = useState({
@@ -82,7 +86,8 @@ function LoginPage() {
         </h2>
       </div>
 
-      <h1> Name of App </h1>
+      <img src={ logo } alt="logo" />
+      <h1> Name App </h1>
       <Form autoComplete="off">
         <Form.Label label="Login">
           Login
