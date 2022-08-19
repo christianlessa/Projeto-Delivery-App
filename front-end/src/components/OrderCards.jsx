@@ -29,7 +29,7 @@ function OrderCard({ id, totalPriceValue, saleDate, status, dataTestId }) {
     <Card>
       <Card.Body className="new-card">
         <Card.Text
-          className="text-card"
+          className="number-card"
           data-testid={ `${dataTestId}order-id-${id}` }
         >
           {'Pedido '}
