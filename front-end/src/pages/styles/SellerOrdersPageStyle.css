@@ -1,0 +1,72 @@
+/* stylelint-disable font-family-no-missing-generic-family-keyword */
+/* stylelint-disable comment-empty-line-before */
+/* stylelint-disable selector-max-specificity */
+/* stylelint-disable font-family-name-quotes */
+/* stylelint-disable font-weight-notation */
+/* stylelint-disable length-zero-no-unit */
+/* stylelint-disable value-list-comma-space-before */
+/* stylelint-disable order/properties-alphabetical-order */
+.seller-orders {
+  border-radius: 20px;
+  margin: 20px 2px;
+}
+
+.new-card {
+  background-color: beige;
+  display: flex;
+  justify-content: space-around;
+  padding-right: 0px;
+}
+
+.text-card {
+  align-items: center;
+  color: black;
+  display: flex;
+  font-family: 'Roboto';
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 0px;
+  text-align: center;
+  padding: 0px 10px;
+}
+
+.card-status {
+  align-items: center;
+  border-radius: 7px;
+  color: black;
+  display: flex;
+  font-family: 'Roboto';
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0px 8px;
+  text-align: center;
+  padding: 0px 10px;
+}
+
+.status-price {
+  display: flex;
+  font-size: 20px;
+  font-weight: bold;
+  justify-content: space-around;
+}
+
+.date-price {
+  align-items: center;
+  color: black;
+  font-family: 'Roboto';
+  display: inline-block;
+  text-align: center;
+  padding: 0px 5px;
+  font-weight: bold;
+}
+
+#address {
+  border-style: none;
+  color: black;
+  display: flex;
+  font-family: 'Roboto';
+  font-weight: bold;
+  justify-content: flex-end;
+  margin-bottom: 0px;
+  padding-right: 10px;
+}

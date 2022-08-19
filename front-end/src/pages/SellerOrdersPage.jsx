@@ -7,6 +7,9 @@ import NavbarComponent from '../components/NavbarComponent';
 import OrderCard from '../components/OrderCards';
 import sellerDeliveryAPI from '../services/sellerDeliveryAPI';
 
+// Style
+import './styles/SellerOrdersPageStyle.css';
+
 function SellerOrdersPage() {
   // const history = useHistory();
   const [sellerOrders, setSellerOrders] = useState([]);
@@ -37,19 +40,28 @@ function SellerOrdersPage() {
         date.slice(eight, teen)}/${date.slice(five, seven)}/${date.slice(0, four)
       }`;
       return (
-        <Link key={ index } to={ `/seller/orders/${product.id}` }>
-          <Card key={ index }>
-            <OrderCard
-              dataTestId="seller_orders__element-"
-              id={ product.id }
-              deliveryAddress={ `${product.deliveryAddress}, ${product.deliveryNumbers}` }
-              saleDate={ ordDate }
-              status={ product.status }
-              totalPriceValue={ product.totalPrice }
-            />
-            <p>{ `${product.deliveryAddress}, ${product.deliveryNumber}` }</p>
-          </Card>
-        </Link>
+        <div className="seller-orders" key={ index }>
+          <Link
+            key={ index }
+            to={ `/seller/orders/${product.id}` }
+            style={ { textDecoration: 'none' } }
+          >
+            <Card key={ index }>
+              <OrderCard
+                dataTestId="seller_orders__element-"
+                id={ product.id }
+                deliveryAddress={ `${product.deliveryAddress},
+                ${product.deliveryNumbers}` }
+                saleDate={ ordDate }
+                status={ product.status }
+                totalPriceValue={ product.totalPrice }
+              />
+              <p id="address">
+                {`${product.deliveryAddress}, ${product.deliveryNumber}` }
+              </p>
+            </Card>
+          </Link>
+        </div>
       );
     });
   }
