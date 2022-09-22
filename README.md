@@ -20,7 +20,7 @@
     <strong>Como executar o projeto</strong>
   </summary><br>
 
-  - **execute o comando "npm run start na raiz do diretório do projeto!**
+  - **Execute o comando "npm run start" na raiz do diretório do projeto!**
 </details>
 
 
